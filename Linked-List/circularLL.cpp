@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+/* code is for circular linked-list */
+
 class Node
 {
 public:
