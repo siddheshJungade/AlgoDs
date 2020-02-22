@@ -13,7 +13,7 @@ int main()
         cin>>A[i];
     }
 
-    for(int i = 0 ; i<n ;i++)
+    for(int i = 1 ; i<n ;i++)
     {
         j = i;
         while(j>0 and A[j] < A[j-1])
