@@ -13,16 +13,20 @@ int main()
         cin>>A[i];
     }
 
-    for(int i = 1 ; i<n ;i++)
+    // this is optimize soln..
+
+    for(int i = 0 ; i<n ;i++)
     {
+        temp = A[i];
         j = i;
-        while(j>0 and A[j] < A[j-1])
+        while(j>0 and temp < A[j-1])
         {
-            temp = A[j];
+            // temp = A[j];
             A[j] = A[j-1];
-            A[j-1] = temp;
+            // A[j-1] = temp;
             j--;
         }
+        A[j] = temp;
     }
 
     for(int i = 0 ; i < n ;i++)
