@@ -35,5 +35,5 @@ main()
     {
         cout<<A[i]<<"\t";
     }
-    cout<<endl;
+    cout<<endl;   
 }
