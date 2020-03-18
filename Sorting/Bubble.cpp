@@ -21,6 +21,8 @@ int main(int argc, char const *argv[])
         cin>>A[i];
     }
 
+    // bouble sort
+
     for(int i = 0 ; i <= n-1 ; i++)
     {
         for(j = 0 ; j <= n-1-1 ; j++)
