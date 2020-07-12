@@ -35,6 +35,7 @@ int partation(int *A,int start ,int end)
         }
     }
     swap(&A[pIndex_2],&A[end]);
+    cout << pIndex_2 << endl ;
     return pIndex_2 ;
 };
 
