@@ -111,7 +111,7 @@ int main(int argc, char const *argv[])
     while(1){
         cout << "------menu-----------" << "\n";
         cout << "1.insert"<<"\n";
-        cout << "2.delet"<< "\n";
+        cout << "2.delete"<< "\n";
         cout << "3.extract min element" << "\n";
         cout << "4.get min element " << "\n";
         cout << "5.decrease element size" << "\n";
