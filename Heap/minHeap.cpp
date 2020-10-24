@@ -144,10 +144,7 @@ int main(int argc, char const *argv[])
                 break;
             case 7:
                 return 0;
-
         }
-
-    }
-
+    }        
     return 0;
 }
