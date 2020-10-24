@@ -18,7 +18,6 @@ public:
     void insertKey(int k);
     void deletekey(int k);
     void display();
-
 };
 
 MaxHeap::MaxHeap(int size) {
@@ -39,10 +38,7 @@ void MaxHeap::maxHeapify(int i){
     if(largest != i){
         swap(heapArr[largest],heapArr[i]);
         maxHeapify(largest);
-    }
-        
-
-    
+    }    
 }
 
 void MaxHeap::insertKey(int k){
@@ -131,10 +127,7 @@ int main(){
                 break;
             case 7:
                 return 0;
-
         }
-
     }
     return 0;
-
 }

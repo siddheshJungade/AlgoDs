@@ -103,6 +103,7 @@ void MinHeap::display()
         cout << heapArr[i] << " ";
     cout << "\n";
 }
+
 int main(int argc, char const *argv[])
 {
     cout << "enetr Size of heap :";
