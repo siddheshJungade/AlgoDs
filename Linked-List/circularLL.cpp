@@ -27,21 +27,21 @@ public:
 class CircularLinkedList
 {
 public:
-    Node *start;
+    Node *top;
 
     CircularLinkedList()
     {
-        start = NULL;
+        top = NULL;
     }
     CircularLinkedList(Node *n)
     {
-        start = n;
+        top = n;
     }
     // 1. check if node exist using key
     Node* nodeExists(int k)
     {
         Node *temp = NULL;
-        Node *ptr = start;
+        Node *ptr = top;
         if (ptr == NULL)
         {
             return temp;
@@ -55,7 +55,7 @@ public:
                     temp = ptr;
                 }
                 ptr = ptr->next;
-            } while (ptr != start);
+            } while (ptr != top);
             return temp;
         }
     }
@@ -70,28 +70,28 @@ public:
         }
         else
         {
-            if (start == NULL)
+            if (top == NULL)
             {
-                start = n;
-                start->next = start;
+                top = n;
+                top->next = top;
                 cout << "\nnode appented LINKED LIST is created" << endl;
             }
             else
             {
-                Node *ptr = start;
-                while (ptr->next != start)
+                Node *ptr = top;
+                while (ptr->next != top)
                 {
                     ptr = ptr->next;
                 }
                 ptr->next = n;
-                n->next = start;
+                n->next = top;
 
                 cout << "\nNode appented" << endl;
             }
         }
     }
 
-    // 3.prepand Node -Attach a Node at the start;
+    // 3.prepand Node -Attach a Node at the top;
     void prependNode(Node *n)
     {
         if (nodeExists(n->key) != NULL)
@@ -100,8 +100,8 @@ public:
         }
         else
         {
-            n->next = start;
-            start = n;
+            n->next = top;
+            top = n;
         }
     }
 
@@ -130,24 +130,24 @@ public:
 
     void deleteNode(int k)
     {
-        if (start == NULL)
+        if (top == NULL)
         {
             cout << "\n Empty list" << endl;
         }
         else
         {
-            if (start->key == k)
+            if (top->key == k)
             {
-                Node *temp = start;
-                start = start->next;
+                Node *temp = top;
+                top = top->next;
                 free(temp);
                 cout << "\n Node Unlinked with key value :" << k << endl;
             }
             else
             {
-                Node *prevPtr = start;
+                Node *prevPtr = top;
                 Node *temp = NULL;
-                Node *currentPtr = start->next;
+                Node *currentPtr = top->next;
 
                 while (prevPtr->key != k)
                 {
@@ -168,7 +168,7 @@ public:
 
     void printList()
     {
-        if (start == NULL)
+        if (top == NULL)
         {
             cout << "\nNode doesnot exist" << endl;
         }
@@ -176,8 +176,8 @@ public:
         {
             cout << endl
                  << "singly Linked List Values :";
-            Node *ptr = start;
-            while (ptr->next != start)
+            Node *ptr = top;
+            while (ptr->next != top)
             {
                 cout << "(" << ptr->key << "," << ptr->data << ") -->";
                 ptr = ptr->next;

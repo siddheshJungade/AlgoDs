@@ -4,7 +4,7 @@
 using namespace std;
 int binarySearch(int *arr ,int i, int n,int found){
     if(n >= i){
-        int mid = i (n - i)/2 ; // best method use
+        int mid = i + (n - i)/2 ; // best method use
         // int mid =flour((i+n)/2): //bad method
 
         if (arr[mid] == found)

@@ -1,64 +1,39 @@
 #include<iostream>
+#include<algorithm>
 using namespace std;
 
-int partation(int *A,int start,int end);
-
-int swap(int *a ,int *b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-};
-
-void quickSort(int *A ,int start , int end)
-{
-    if(start>=end)
-    return;
-    else
-    {
-        int pIndex = partation(A,start,end);
-        quickSort(A,start,pIndex-1);
-        quickSort(A,pIndex+1,end);
-    }
-};
-
-int partation(int *A,int start ,int end)
-{
-    int pivot = A[end];
-    int pIndex_2 = start;
-    for(int i = start ; i <= end-1;i++) 
-    {
-        if(A[i]<pivot)
-        {
-            swap(&A[i],&A[pIndex_2]);
-            pIndex_2++;
-        }
-    }
-    swap(&A[pIndex_2],&A[end]);
-    cout << pIndex_2 << endl ;
-    return pIndex_2 ;
-};
+int partationFunction(int a[],int top , int end , int pivit) {
+	int smale_ele_i = top;
+	for(int j = top ; j < end ; j++) {
+		if(a[j] < pivit){
+			swap(a[smale_ele_i],a[j]);
+			smale_ele_i++;
+		}
+	}
+	swap(a[smale_ele_i],a[end]);
+	return smale_ele_i;
+}
+void quickSort(int a[] , int top , int end){
+		
+		if(top < end){
+			int pivit = a[end];
+			int partation = partationFunction(a,top,end,pivit);
+			quickSort(a ,top ,partation - 1);
+			quickSort(a , partation+1,end);
+		}
+}
 
 int main(int argc, char const *argv[])
 {
     int n;
-    cin>>n;
-    int A[n],j,temp;
+    cin >> n;
+    int A[n];
 
-    for(int i = 0 ; i<n ; i++)
-    {
-        cout<<"----------"<<i<<"------------"<<endl;
-        cin>>A[i];
-    }
+    for (int i = 0; i < n; i++)
+        cin >> A[i];
 
-
-    quickSort(A,0,n-1);
-
-    // print elements
-    for(int i = 0 ; i < n ;i++)
-    {
-        cout<<A[i]<<"\t";
-    }
-    cout<<endl;
-
-}    
+    quickSort(A,0, n - 1);
+    
+    for (int i = 0; i < n; i++)
+        cout <<"\t"<< A[i] <<"\t";
+}

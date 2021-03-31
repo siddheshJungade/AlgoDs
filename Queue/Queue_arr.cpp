@@ -63,9 +63,7 @@ public:
     
     void print() {
         for(int i = front; i<=rear; i++)
-        {
                 cout<<arr[i]<<"-->";
-        }
         cout<<endl;
     }
         

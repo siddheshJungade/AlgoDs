@@ -60,7 +60,7 @@ public:
                 cout<<"\n Queue is deQueue"<<endl;
             }
             else {
-                front = (front+1)%n;
+                front = (front+1)%n;//geting circuler value
                 cout<<"\n Queue is deQueue"<<endl; 
             }
         }

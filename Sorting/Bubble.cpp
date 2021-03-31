@@ -8,6 +8,19 @@ void swap(int *xp,int *yp)
     *xp = *yp;
     *yp = temp;
 }
+ void bubbleSort(int a[], int n)
+{
+        if(n == 1)
+            return;
+        
+        for(int i = 0 ; i < n - 1 ; i++){
+            if(a[i] > a[i+1])
+                swap(&a[i],&a[i+1]);
+        }
+        
+        bubbleSort(a,n-1);
+        // Your code here  
+}
 
 int main(int argc, char const *argv[])
 {
@@ -16,10 +29,7 @@ int main(int argc, char const *argv[])
     int A[n],j,temp;
 
     for(int i = 0 ; i<n ; i++)
-    {
-        cout<<"----------"<<i<<"------------"<<endl;
         cin>>A[i];
-    }
 
     // bouble sort
 

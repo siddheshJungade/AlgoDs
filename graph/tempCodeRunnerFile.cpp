@@ -1,0 +1,1 @@
+    cout<<"Edge \tWeight\n"; 

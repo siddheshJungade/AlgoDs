@@ -6,15 +6,15 @@ int main(int argc, char const *argv[])
 {
     string s;
     cin>>s;
-    string s1;
-    cin>>s1;
+    string e_stk;
+    cin>>e_stk;
 
-    s.append(s1);
+    s.append(e_stk);
     cout<<s<<endl;
 
-    string s2 = s.substr(0,5);
-    cout<<s2<<endl;
-    cout<<s2.erase(2);
+    string d_stk = s.substr(0,5);
+    cout<<d_stk<<endl;
+    cout<<d_stk.erase(2);
     return 0;
 }
 

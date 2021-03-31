@@ -26,16 +26,16 @@ public:
 class DoublyLL
 {
 private:
-    Node *start = NULL;
+    Node *top = NULL;
 
 public:
     DoublyLL()
     {
-        start = NULL;
+        top = NULL;
     }
     DoublyLL(Node *n)
     {
-        start = n;
+        top = n;
     }
 
     // Node exist or not ??
@@ -43,7 +43,7 @@ public:
     Node *nodeExist(int k)
     {
         Node *temp = NULL;
-        Node *ptr = start;
+        Node *ptr = top;
         while (ptr != NULL)
         {
             if (ptr->key == k)
@@ -63,14 +63,14 @@ public:
             cout << "\nNode Exist" << endl;
         else
         {
-            if (start == NULL)
+            if (top == NULL)
             {
-                start = n;
+                top = n;
                 cout << "\ndoubaly LL IS CREATED" << endl;
             }
             else
             {
-                Node* ptr = start;
+                Node* ptr = top;
 
                 while (ptr->next != NULL)
                 {
@@ -89,16 +89,16 @@ public:
             cout << "\nNode Exist" << endl;
         else
         {
-            if (start == NULL)
+            if (top == NULL)
             {
-                start = n;
+                top = n;
                 cout << "\n LL is created" << endl;
             }
             else
             {
-                n->next = start;
-                start->prev = n;
-                start = n;
+                n->next = top;
+                top->prev = n;
+                top = n;
             }
         }
     }
@@ -119,7 +119,7 @@ public:
                 cout << "\nnode Exist" << endl;
             else
             {
-                Node *ptr = start;
+                Node *ptr = top;
 
                 while (ptr->key != k)
                     ptr = ptr->next;
@@ -140,7 +140,7 @@ public:
 
         else
         {
-            Node *ptr = start;
+            Node *ptr = top;
             Node *temp;
             Node *nextNode;
             while (ptr->key != k)
@@ -162,7 +162,7 @@ public:
 
     void printList()
     {
-        if (start == NULL)
+        if (top == NULL)
         {
             cout << "\nNode doesnot exist" << endl;
         }
@@ -170,7 +170,7 @@ public:
         {
             cout << endl
                  << "singly Linked List Values :";
-            Node *ptr = start;
+            Node *ptr = top;
             while (ptr != NULL)
             {
                 cout << "<--(" << ptr->key << "," << ptr->data << ") -->";

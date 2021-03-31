@@ -1,78 +1,57 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-int merge(int A[], int l, int m, int r)
-{
-    int n1 = m - l + 1;
-    int n2 = r - m;
-    int arr1[n1];
-    int arr2[n2];
-
-    for (int i = 0; i < n1; i++)
-        arr1[i] = A[l + i];
-    for (int i = 0; i < n2; i++)
-        arr2[i] = A[m + i + 1];
-
-    int i = 0;
-    int j = 0;
-    int k = l;
-
-    while (i < n1 && j < n2)
-    {
-        if (arr1[i] < arr2[j])
-        {
-            A[k] = arr1[i];
-            i++;
-        }
-        else
-        {
-            A[k] = arr2[j];
-            j++;
-        }
-        k++;
-    }
-
-   while (i < n1) 
-    { 
-        A[k] = arr1[i]; 
-        i++; 
-        k++; 
-    }
-
-    while (i < n1) 
-    { 
-        A[k] = arr2[j]; 
-        j++; 
-        k++; 
-    } 
+int merge(int a[],int top , int mid , int end) {
+	int left = mid - top + 1;
+	int right = end - mid ;
+	int arr_left[left] , arr_right[right];
+	
+	for(int i = 0 ; i < left ; i++)
+		arr_left[i] = a[top + i];
+	for(int i = 0 ; i < right ; i++)
+		arr_right[i] = a[mid + 1 + i];
+	
+	int i = 0;
+	int j = 0 ; 
+	int k = top;
+	while(i < left and j < right) {
+		if(arr_left[i] < arr_right[j]){
+			a[k] = arr_left[i];
+			i++;k++;
+		} else {
+			a[k] = arr_right[j];
+			j++;k++;
+		}		
+	}
+	while(i < left){
+		a[k] = arr_left[i];
+		i++;k++;
+	}
+	while(j < right) {
+		a[k] = arr_right[j];
+		j++;k++;
+	}
+}
+void mergeSort(int a[] , int top , int end){
+		if(top < end){
+			int mid = (top + end) / 2;
+			mergeSort(a,top,mid);
+			mergeSort(a,mid+1,end);
+			merge(a,top,mid,end);
+		}
 }
 
-void mergeSort(int A[], int l, int r)
-{
-    if (l < r)
-    {
-        int m = (l + r) / 2;
-
-        mergeSort(A, l, m);
-        mergeSort(A, m + 1, r);
-        merge(A, l, m, r);
-    }
-}
-main(int argc, char const *argv[])
+int main(int argc, char const *argv[])
 {
     int n;
     cin >> n;
     int A[n];
 
     for (int i = 0; i < n; i++)
-    {
-        cout << "----------" << i << "------------" << endl;
         cin >> A[i];
-    }
+
     mergeSort(A,0, n - 1);
+	
     for (int i = 0; i < n; i++)
-    {
-        
         cout <<"\t"<< A[i] <<"\t";
-    }
 }

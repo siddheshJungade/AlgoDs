@@ -22,24 +22,24 @@ public:
     }
 };
 
-class SinglyLinkedList
+class StackLinkedList
 {
 public:
-    Node *start;
+    Node *top;
 
-    SinglyLinkedList()
+    StackLinkedList()
     {
-        start = NULL;
+        top = NULL;
     }
-    SinglyLinkedList(Node *n)
+    StackLinkedList(Node *n)
     {
-        start = n;
+        top = n;
     }
     // 1. check if node exist using key
     Node *nodeExists(int k)
     {
         Node *temp = NULL;
-        Node *ptr = start;
+        Node *ptr = top;
         while (ptr != NULL)
         {
             if (ptr->key == k)
@@ -61,16 +61,16 @@ public:
         }
         else
         {
-            if (start == NULL)
+            if (top == NULL)
             {
-                start = n;
+                top = n;
                 cout << "\nnode appented LINKED LIST is created" << endl;
             }
             else
             {
-                Node *ptr = start;
+                Node *ptr = top;
 
-                while (ptr->next != start)
+                while (ptr->next != top)
                     ptr = ptr->next;
 
                 ptr->next = n;
@@ -79,7 +79,7 @@ public:
         }
     }
 
-    // 3.prepand Node -Attach a Node at the start;
+    // 3.prepand Node -Attach a Node at the top;
     void prependNode(Node *n)
     {
         if (nodeExists(n->key) != NULL)
@@ -88,8 +88,8 @@ public:
         }
         else
         {
-            n->next = start;
-            start = n;
+            n->next = top;
+            top = n;
         }
     }
 
@@ -118,24 +118,24 @@ public:
 
     void deleteNode(int k)
     {
-        if (start == NULL)
+        if (top == NULL)
         {
             cout << "\n Empty list" << endl;
         }
         else
         {
-            if (start->key == k)
+            if (top->key == k)
             { 
-                Node* temp = start;
-                start = start->next;
+                Node* temp = top;
+                top = top->next;
                 free(temp);
                 cout << "\n Node Unlinked with key value :" << k << endl;
             }
             else
             {
-                Node *prevPtr = start;
+                Node *prevPtr = top;
                 Node *temp = NULL;
-                Node *currentPtr = start->next;
+                Node *currentPtr = top->next;
 
                 while (prevPtr->key != k)
                 {
@@ -156,7 +156,7 @@ public:
 
     void printList()
     {
-        if (start == NULL)
+        if (top == NULL)
         {
             cout << "\nNode doesnot exist" << endl;
         }
@@ -164,7 +164,7 @@ public:
         {
             cout << endl
                  << "singly Linked List Values :";
-            Node *ptr = start;
+            Node *ptr = top;
             while (ptr != NULL)
             {
                 cout << "(" << ptr->key << "," << ptr->data << ") -->";
@@ -173,11 +173,26 @@ public:
             cout << endl;
         }
     }
+
+    void reverse(){
+        Node *next = NULL;
+        Node *prev = NULL;
+        Node *current = top;
+
+        while(current != NULL) {
+            next = current->next;
+            current->next = prev;
+            prev = current;
+            current = next;
+        }
+        top = prev;
+    }
+
 };
 
 int main()
 {
-    SinglyLinkedList s;
+    StackLinkedList s;
     int key1, k1, data1;
     while (1)
     {
@@ -187,6 +202,7 @@ int main()
         cout << "3.insert()" << endl;
         cout << "4.delete()" << endl;
         cout << "5.print()" << endl;
+        cout << "6.reverse()" << endl;
 
         Node *n1 = new Node();
         char option;
@@ -195,7 +211,7 @@ int main()
         switch (option)
         {
         case '1':
-            cout << "enter yor data :" << endl;
+            cout << "enter yor data and Key:" << endl;
             cin >> data1;
             cin >> key1;
             n1->key = key1;
@@ -233,6 +249,9 @@ int main()
             s.printList();
             break;
         case '6':
+            s.reverse();
+            break;
+        case '7':
             return 0;
             break;
         }
